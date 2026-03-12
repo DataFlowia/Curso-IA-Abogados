@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje Enviado - DataflowIA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        legal: { 900: '#102a43', 800: '#243b53' },
+                        accent: { 600: '#d97706', 500: '#f59e0b' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-legal-900 min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-2xl w-full text-center">
+        <!-- Icono de éxito -->
+        <div class="mb-8">
+            <svg class="w-24 h-24 mx-auto text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+        </div>
+        
+        <!-- Mensaje principal -->
+        <h1 class="text-4xl font-bold text-white mb-4">¡Mensaje Enviado!</h1>
+        <p class="text-xl text-slate-300 mb-8">Gracias por tu interés en nuestro programa de capacitación.</p>
+        
+        <div class="bg-slate-800 rounded-2xl p-8 mb-8 border border-slate-700">
+            <p class="text-slate-300 mb-4">Hemos recibido tu consulta correctamente. Nuestro equipo revisará tu mensaje y te contactará a la brevedad.</p>
+            <p class="text-sm text-slate-400">Tiempo estimado de respuesta: 24-48 horas hábiles</p>
+        </div>
+        
+        <!-- Botón de regreso -->
+        <a href="index.html" class="inline-block bg-accent-600 hover:bg-accent-500 text-white font-semibold px-8 py-3 rounded-lg transition-all">
+            Volver al inicio
+        </a>
+        
+        <!-- Información de contacto alternativa -->
+        <div class="mt-12 text-slate-400 text-sm">
+            <p>¿Necesitas atención inmediata?</p>
+            <a href="mailto:trade8tech@gmail.com" class="text-accent-500 hover:text-accent-400">trade8tech@gmail.com</a>
+        </div>
+    </div>
+</body>
+</html>
