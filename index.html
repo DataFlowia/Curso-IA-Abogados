@@ -421,20 +421,23 @@
                 <!-- Columna Formulario -->
                 <div class="bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-700">
                     <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
-                        <span class="text-accent-500">✉️</span> Contacto
+                        <span class="text-accent-500">✉️</span> Contacto Directo
                     </h3>
-                    <form id="contact-form" class="space-y-3">
+                    <form action="https://formspree.io/f/contacto@dataflowia.com" method="POST" id="contact-form" class="space-y-3">
                         <div>
-                            <input type="text" required placeholder="Nombre Completo" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all placeholder:text-slate-600">
+                            <input type="text" name="name" required placeholder="Nombre Completo" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all placeholder:text-slate-600">
                         </div>
                         <div>
-                            <input type="email" required placeholder="Correo Electrónico" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all placeholder:text-slate-600">
+                            <input type="email" name="email" required placeholder="Tu correo electrónico" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all placeholder:text-slate-600">
                         </div>
                         <div>
-                            <textarea rows="3" required placeholder="Consulta o aviso de pago..." class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all resize-none placeholder:text-slate-600"></textarea>
+                            <textarea name="message" rows="3" required placeholder="Consulta o aviso de pago..." class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all resize-none placeholder:text-slate-600"></textarea>
                         </div>
+                        <input type="hidden" name="_subject" value="Nueva consulta desde Propuesta IA Jurídica">
+                        
+                        <!-- TEXTO CAMBIADO A "Enviar" -->
                         <button type="submit" class="w-full bg-accent-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-accent-500 transition-colors shadow-lg text-sm flex items-center justify-center gap-2">
-                            Enviar Solicitud 🚀
+                            Enviar 🚀
                         </button>
                     </form>
                     <div id="form-success" class="hidden mt-3 p-3 bg-slate-900 text-accent-500 rounded-lg text-center text-xs font-medium border border-accent-600/30">
@@ -513,15 +516,9 @@
             const contactForm = document.getElementById('contact-form');
             const formSuccess = document.getElementById('form-success');
 
-            contactForm.onsubmit = (e) => {
-                e.preventDefault();
-                contactForm.classList.add('opacity-50', 'pointer-events-none');
-                
-                // Simulación de envío
-                setTimeout(() => {
-                    contactForm.classList.add('hidden');
-                    formSuccess.classList.remove('hidden');
-                }, 1000);
+            contactForm.onsubmit = function(e) {
+                formSuccess.classList.remove('hidden');
+                contactForm.classList.add('opacity-50');
             };
 
             // Gráficos (Chart.js)
