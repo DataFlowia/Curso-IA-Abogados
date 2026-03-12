@@ -418,12 +418,19 @@
                     </div>
                 </div>
 
-                <!-- Columna Formulario -->
+                <!-- Columna Formulario Integrado con Static Forms -->
                 <div class="bg-slate-800 p-6 rounded-2xl shadow-2xl border border-slate-700">
                     <h3 class="text-xl font-bold mb-6 flex items-center gap-3">
                         <span class="text-accent-500">✉️</span> Contacto Directo
                     </h3>
-                    <form action="https://formspree.io/f/contacto@dataflowia.com" method="POST" id="contact-form" class="space-y-3">
+                    <!-- Configuración Static Forms -->
+                    <form action="https://api.staticforms.xyz/process" method="POST" id="contact-form" class="space-y-3">
+                        <!-- Reemplaza el valor de accessKey con tu clave de Static Forms -->
+                        <input type="hidden" name="accessKey" value="sf_9bm3l2j1jnd4hae4kjnj34dn">
+                        
+                        <!-- Redirección personalizada después del envío (opcional) -->
+                        <input type="hidden" name="redirectTo" value="https://www.dataflowia.com">
+
                         <div>
                             <input type="text" name="name" required placeholder="Nombre Completo" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all placeholder:text-slate-600">
                         </div>
@@ -433,15 +440,16 @@
                         <div>
                             <textarea name="message" rows="3" required placeholder="Consulta o aviso de pago..." class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white text-sm outline-none focus:border-accent-500 transition-all resize-none placeholder:text-slate-600"></textarea>
                         </div>
-                        <input type="hidden" name="_subject" value="Nueva consulta desde Propuesta IA Jurídica">
                         
-                        <!-- TEXTO CAMBIADO A "Enviar" -->
+                        <!-- Honeypot para evitar spam (Static Forms lo detecta) -->
+                        <input type="text" name="honeypot" style="display:none">
+                        
                         <button type="submit" class="w-full bg-accent-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-accent-500 transition-colors shadow-lg text-sm flex items-center justify-center gap-2">
                             Enviar 🚀
                         </button>
                     </form>
                     <div id="form-success" class="hidden mt-3 p-3 bg-slate-900 text-accent-500 rounded-lg text-center text-xs font-medium border border-accent-600/30">
-                        ¡Mensaje enviado con éxito! Nos contactaremos pronto.
+                        ¡Procesando mensaje! Te redirigiremos en breve.
                     </div>
                 </div>
             </div>
@@ -491,7 +499,7 @@
             btnMod1.onclick = () => switchTab(btnMod1, btnMod2, contentMod1, contentMod2);
             btnMod2.onclick = () => switchTab(btnMod2, btnMod1, contentMod2, contentMod1);
 
-            // Calculadora
+            // Calculadora de inversión
             const paxInput = document.getElementById('pax-input');
             const calcTotal = document.getElementById('calc-total');
             const discountTag = document.getElementById('discount-tag');
@@ -512,16 +520,17 @@
                 calcTotal.textContent = '$' + Math.floor(total).toLocaleString('es-CL');
             };
 
-            // Manejo del Formulario
+            // Manejo visual del formulario tras envío
             const contactForm = document.getElementById('contact-form');
             const formSuccess = document.getElementById('form-success');
 
-            contactForm.onsubmit = function(e) {
+            contactForm.onsubmit = function() {
                 formSuccess.classList.remove('hidden');
                 contactForm.classList.add('opacity-50');
+                // Nota: Static Forms redirigirá automáticamente si se configuró 'redirectTo'
             };
 
-            // Gráficos (Chart.js)
+            // Gráficos ilustrativos
             const ctxMeth = document.getElementById('methodologyChart').getContext('2d');
             new Chart(ctxMeth, {
                 type: 'doughnut',
